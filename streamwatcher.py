@@ -32,7 +32,8 @@ def main():
     # Prompt for login credentials and setup stream object
     username = raw_input('Twitter username: ')
     password = getpass('Twitter password: ')
-    stream = tweepy.Stream(username, password, StreamWatcherListener(), timeout=None)
+    auth = tweepy.BasicAuthHandler(username, password)
+    stream = tweepy.Stream(auth, StreamWatcherListener(), timeout=None)
 
     # Prompt for mode of streaming
     valid_modes = ['sample', 'filter']
